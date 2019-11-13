@@ -1,0 +1,42 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+def Circle(X,Y):
+     return (X*X+Y*Y)
+xx=np.linspace(-2,2,400)
+yy=np.linspace(-2,2,400)
+[X,Y]=np.meshgrid(xx,yy)
+
+Z=Circle(X,Y)
+horizontal = np.arange(-2,2,0.01)
+x_for_horizontal_y_for_vertical = np.zeros(len(horizontal))
+plt.figure()
+plt.plot(x_for_horizontal_y_for_vertical, horizontal, color="black")
+plt.plot(horizontal,x_for_horizontal_y_for_vertical, color="black")
+plt.plot([-(1.0/3.0),-1.0],[0,0], 'o', color="green", label='zeros')
+plt.plot([0,0],[0,0], 'rx', label='poles')
+plt.text(0.05,0.05, "2",fontsize=10, color="red")
+plt.contour(X,Y,Z,[1])
+plt.title("Pole-Zero Plot (a)")
+plt.legend(loc='upper right')
+plt.show()
+
+plt.figure()
+plt.plot(x_for_horizontal_y_for_vertical, horizontal, color='black')
+plt.plot(horizontal,x_for_horizontal_y_for_vertical, color="black")
+plt.plot([1,-1.0],[0,0], 'o', color="green", label='zeros')
+plt.plot([2,4],[0,0], 'rx', label='poles')
+plt.contour(X,Y,Z,[1])
+plt.title("Pole-Zero Plot (b)")
+plt.legend(loc='upper right')
+plt.show()
+
+plt.figure()
+plt.plot(x_for_horizontal_y_for_vertical, horizontal, color='black')
+plt.plot(horizontal,x_for_horizontal_y_for_vertical, color="black")
+plt.plot([-1,-1],[math.sqrt(2)/2,-math.sqrt(2)/2], 'o', color="green", label='zeros')
+plt.plot([1,-1],[0,0], 'rx', label='poles')
+plt.contour(X,Y,Z,[1])
+plt.title("Pole-Zero Plot (c)")
+plt.legend(loc='upper right')
+plt.show()
