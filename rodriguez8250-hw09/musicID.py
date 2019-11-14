@@ -34,7 +34,7 @@ def classifyMusic() :
      input_signature = []
 
      while i < time_segments:
-          input_signature.append( np.argmax(Sxx_input[:, i]) * 2.0)
+          input_signature.append( np.argmax(Sxx_input[:, i]))
           i+=1
      input_signature = np.array(input_signature)
      comparison_signatures = np.zeros((database_size, time_segments))
@@ -46,7 +46,7 @@ def classifyMusic() :
           current_song, fs_comparison = sf.read(file_names[i])
           f_comparison, t_comparison, Sxx_comparison = spectrogram(current_song, fs=fs_comparison, nperseg=fs_comparison//2)
           while j < time_segments:
-               temp_result.append( np.argmax(Sxx_comparison[:,j]) * 2)
+               temp_result.append( np.argmax(Sxx_comparison[:,j]))
                j+=1
           comparison_signatures[i] = np.array(temp_result)
           i+=1
