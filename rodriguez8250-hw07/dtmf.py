@@ -45,16 +45,6 @@ def processTones(name, L, fs, samplesPerTone) :
           output[i] = np.convolve(filters[i], file_input)
           i+=1
      i = 0
-     while i < len_freq:
-          x, y = freqz(filters[i], 1)
-          x = un_normalize_response(x, fs)
-          plot(x,y)
-          i+=1
-     
-     plt.show(block=False)
-     plt.pause(1)
-     plt.close()
-     i = 0
      results = []
      while i < length_input/samplesPerTone:
           means = np.zeros(len_freq)
@@ -86,7 +76,7 @@ def processTones(name, L, fs, samplesPerTone) :
      plt.ylabel('Frequency [Hz}')
      plt.xlabel('Time [sec]')
      plt.show(block=False)
-     plt.pause(1)
+     plt.pause(3)
      plt.close()
      return result
 
